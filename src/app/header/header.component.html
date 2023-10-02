@@ -1,0 +1,25 @@
+<h1>hello </h1> <ng-content></ng-content>
+<br>
+<img [src]="path" width="10%">
+<h1>ou bien </h1>
+<img src="{{path}}" width="10%">
+<br><br><br><br>
+{{x}}
+<input type="text" [(ngModel)]="x">
+<br><br><br><br><br>
+<div *ngIf="x<20 else alt">
+  <p>
+    hello twin
+  </p>
+</div>
+<ng-template #alt>
+  <p>
+    hi twin
+  </p>
+</ng-template>
+
+<div *ngFor="let i of list">
+  <ul>
+    <li>{{i}}</li>
+  </ul>
+</div>

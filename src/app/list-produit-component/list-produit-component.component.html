@@ -1,0 +1,28 @@
+<br>
+<ol >
+  <div>
+    <!-- Input de recherche -->
+    <input type="text" [(ngModel)]="codeProduitRecherche" placeholder="Code du produit" (ngModelChange)="rechercherProduit()">
+  </div>
+  <br>
+<div *ngFor="let item of produitsFiltres">
+
+    <li  >
+    <fieldset  [ngStyle]="{
+      'color': estPrixInferieurA50(item) ? 'blue' : 'inherit',
+      'font-style': estPrixInferieurA50(item) ? 'italic' : 'normal',
+      'font-size.px': estPrixInferieurA50(item) ? 20 : 'inherit'
+    }">
+      <legend>Produit: {{item.libelle}} <button [disabled]="item.tauxTVA ===0.02" (click)="ajusterTVA(item)"> Ajuster TVA</button> </legend>
+      <ul >
+        <li> <h4 >identifiant :{{item.idProduit}}</h4>  </li>
+        <li><h4 >code :{{item.code}}</h4>  </li>
+        <li> <h4 >prix unitaire : {{item.prixUnitaire}}</h4>  </li>
+        <li><h4 >Taux TVA : {{item.tauxTVA}}</h4>   </li>
+        <li *ngIf="tvamodifie">TVA modifiée</li>
+      </ul>
+    </fieldset>
+    </li>
+
+</div>
+</ol>

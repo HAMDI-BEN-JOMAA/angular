@@ -1,0 +1,118 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<br> <br> <br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="main-box clearfix">
+        <input type="text" placeholder="search "[(ngModel)]="category">
+        <div *ngIf="!category else users">
+          <div class="table-responsive">
+            <table class="table user-list">
+              <thead>
+              <tr>
+                <th><span>User</span></th>
+                <th><span>Created</span></th>
+                <th class="text-center"><span>profession</span></th>
+                <th><span>Email</span></th>
+                <th>&nbsp;</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let item of list ;let indexOfelement=index">
+              <tr >
+
+                <td>
+                  <img src="{{item.picture}}" alt="" width="10%">
+                  <a href="#" class="user-link">{{item.firstName }}{{item.lastName}}</a>
+                  <br>
+                  <span class="user-subhead">{{item.accountCategory }}</span>
+                </td>
+                <td>
+                  {{item.birthDate }}
+                </td>
+                <td class="text-center">
+                  <span class="label label-default">{{item.profession }}</span>
+                </td>
+                <td>
+                  <a href="#">{{item.email }}</a>
+                </td>
+                <td style="width: 20%;">
+                  <div *ngIf="item.accountCategory === 'Admin' else alt">
+                    <button type="button" class="btn btn-outline-danger" disabled>
+                      Delete
+                    </button>
+                  </div>
+                  <ng-template #alt>
+                    <button type="button" class="btn btn-outline-danger" (click)="delete(indexOfelement)">
+                      Delete
+                    </button>
+                  </ng-template>
+
+                </td>
+
+
+              </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <ng-template #users>
+          <div class="table-responsive">
+            <table class="table user-list">
+              <thead>
+              <tr>
+                <th><span>User</span></th>
+                <th><span>Created</span></th>
+                <th class="text-center"><span>profession</span></th>
+                <th><span>Email</span></th>
+                <th>&nbsp;</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let item of list ;let indexOfelement=index">
+              <div *ngIf="item.accountCategory === category">
+
+
+              <tr >
+                <td>
+                  <img src="{{item.picture}}" alt="" width="10%">
+                  <a href="#" class="user-link">{{item.firstName }}{{item.lastName}}</a>
+                  <br>
+                  <span class="user-subhead">{{item.accountCategory }}</span>
+                </td>
+                <td>
+                  {{item.birthDate }}
+                </td>
+                <td class="text-center">
+                  <span class="label label-default">{{item.profession }}</span>
+                </td>
+                <td>
+                  <a href="#">{{item.email }}</a>
+                </td>
+                <td style="width: 20%;">
+                  <div *ngIf="item.accountCategory === 'Admin' else alt">
+                    <button type="button" class="btn btn-outline-danger" disabled>
+                      Delete
+                    </button>
+                  </div>
+                  <ng-template #alt>
+                    <button type="button" class="btn btn-outline-danger" (click)="delete(indexOfelement)">
+                      Delete
+                    </button>
+                  </ng-template>
+
+                </td>
+
+
+              </tr>
+                </div>
+
+              </tbody>
+            </table>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
