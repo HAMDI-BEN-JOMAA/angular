@@ -40,10 +40,16 @@
                     <button type="button" class="btn btn-outline-danger" disabled>
                       Delete
                     </button>
+                    <button type="button" class="btn btn-outline-danger" [routerLink]="['/edit',item.idCustomer]">
+                      update
+                    </button>
                   </div>
                   <ng-template #alt>
                     <button type="button" class="btn btn-outline-danger" (click)="delete(indexOfelement)">
                       Delete
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" [routerLink]="['/edit',item.idCustomer]">
+                      update
                     </button>
                   </ng-template>
 
@@ -94,10 +100,16 @@
                     <button type="button" class="btn btn-outline-danger" disabled>
                       Delete
                     </button>
+                    <button type="button" class="btn btn-outline-danger" disabled>
+                      update
+                    </button>
                   </div>
                   <ng-template #alt>
                     <button type="button" class="btn btn-outline-danger" (click)="delete(indexOfelement)">
                       Delete
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" [routerLink]="['/edit',item.idCustomer]">
+                      update
                     </button>
                   </ng-template>
 
@@ -115,4 +127,5 @@
       </div>
     </div>
   </div>
+  <a routerLink="add"> add user</a>
 </div>
